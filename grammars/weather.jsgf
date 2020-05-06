@@ -1,0 +1,7 @@
+#JSGF V1.0 UTF-8 en;
+grammar weather;
+
+public <CHECK_WEATHER> = <CHECK_WEATHER_1> | <CHECK_WEATHER_2>;
+
+<CHECK_WEATHER_1> = (What is | What's) [the] weather [like] today;
+<CHECK_WEATHER_2> = (Tell me [the] weather [[for] (today | tomorrow)] | Check [the] weather [for me]);
