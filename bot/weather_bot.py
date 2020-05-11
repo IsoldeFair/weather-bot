@@ -12,7 +12,12 @@ class WeatherBot:
 
         print(self.grammar)
 
+    def _checkWeather(self):
+        return "21 degrees"
+
     def response(self, user_input):
         rule = self.grammar.find_matching_rules(user_input)
-        return rule
-
+        if rule and rule[0].name == "CHECK_WEATHER":
+            return self._checkWeather()
+        else:
+            return "I don't know what you're talking about"

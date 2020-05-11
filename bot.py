@@ -28,7 +28,7 @@ def main(argv=None):
         while user_input != "quit":
             user_input = input("Type your command:")
             response = weather_check.response(user_input)
-            print(response[0].name)
+            print(response)
 
     except KeyboardInterrupt:
         # handle keyboard interrupt ###
