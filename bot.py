@@ -18,11 +18,14 @@ def main(argv=None):
 
         parser.add_argument('-v', '--version', action='version',
                             version=__version__)
-
+        
+        parser.add_argument('-k', '--apikey', action='store', dest='apikey',
+                            help='API key to OpenWeather')
+        
         # Process arguments
         args = parser.parse_args()
-
-        weather_check = WeatherBot("./grammars/weather.jsgf")
+        
+        weather_check = WeatherBot("./grammars/weather.jsgf", args.apikey)
 
         user_input = ""
         while user_input != "quit":
