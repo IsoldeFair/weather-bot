@@ -11,6 +11,7 @@ import requests
 from typing import Dict
 from jsgf import parse_grammar_string
 
+
 class WeatherBot(object):
     """Bot for checking the weather"""
     def __init__(self, grammar_path: str, api_key: str) -> None:
@@ -19,6 +20,21 @@ class WeatherBot(object):
 
         self.grammar = parse_grammar_string(data)
         self.api_key = api_key
+
+    def __get_weather_from_api(self, city: str, country: str, api_key: str) -> Dict:
+        """Sends a request to OpenWeather API.
+
+        Args:
+          city: name of the city
+          country: name of the country the city is in
+          api_key: API key to OpenWeather
+
+        Returns:
+          API response in json format.
+        """
+        openweather_url = 'http://api.openweathermap.org/data/2.5/weather?q={},{}&APPID={}'
+        req = requests.get(openweather_url.format(city, country, api_key))
+        return json.loads(req.text)
 
     def __check_weather(self, city: str='warsaw', country: str='poland') -> str:
         """Forms a full response for the user about the weather conditions in a particular city.
@@ -49,17 +65,3 @@ class WeatherBot(object):
             return self.__check_weather()
         return "I don't know what you're talking about"
 
-    def __get_weather_from_api(self, city: str, country: str, api_key: str) -> Dict:
-        """Sends a request to OpenWeather API.
-
-        Args:
-          city: name of the city
-          country: name of the country the city is in
-          api_key: API key to OpenWeather
-
-        Returns:
-          API response in json format.
-        """
-        openweather_url = 'http://api.openweathermap.org/data/2.5/weather?q={},{}&APPID={}'
-        req = requests.get(openweather_url.format(city, country, api_key))
-        return json.loads(req.text)
