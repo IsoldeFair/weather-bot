@@ -1,6 +1,7 @@
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
 import sys
 from bot.weather_bot import WeatherBot
+from bot.tts import tts
 
 __version__ = '0.1.0'
 
@@ -32,6 +33,7 @@ def main(argv=None):
             user_input = input("Type your command:")
             response = weather_check.response(user_input)
             print(response)
+            tts(response)
 
     except KeyboardInterrupt:
         # handle keyboard interrupt ###
