@@ -1,0 +1,16 @@
+name: weather-bot
+channels:
+  - defaults
+dependencies:
+  - pip=20.0.2=py37_1
+  - python=3.7.6=h0371630_2
+  - requests=2.22.0=py37_1
+  - pyaudio=0.2.11=py37h7b6447c_2
+  - pip:
+    - google-cloud-texttospeech==1.0.1
+    - pygame==1.9.6
+    - pyjsgf==1.9.0
+    - pytest==5.4.3
+    - speechrecognition==3.8.1
+prefix: /home/gosia/miniconda3
+
